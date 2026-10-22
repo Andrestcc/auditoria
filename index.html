@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducción a la Auditoría de T.I. | Grupo 06 – UNJFSC</title>
+<meta name="description" content="Blog educativo: Introducción a la Auditoría de T.I. – Grupo 06, UNJFSC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif']}}}}</script>
+<style>
+section[id]{scroll-margin-top:5.5rem}
+.toc-link.active{color:#4338ca;font-weight:600;border-color:#4f46e5}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;box-shadow:0 1px 3px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.04)}
+.prose-a p{margin-bottom:1rem;line-height:1.75;color:#334155}
+.prose-a h3{font-weight:700;color:#1e293b;margin:1.25rem 0 .5rem;font-size:1.1rem}
+.prose-a ul{margin:.5rem 0 1rem 0;padding:0;list-style:none}
+.prose-a li{position:relative;padding-left:1.5rem;margin-bottom:.5rem;color:#334155;line-height:1.65}
+.prose-a li::before{content:"";position:absolute;left:.25rem;top:.6rem;width:.5rem;height:.5rem;border-radius:50%;background:#6366f1}
+.tbl-wrap{overflow-x:auto;margin:1rem 0;border:1px solid #e2e8f0;border-radius:.75rem}
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+th{background:#eef2ff;color:#312e81;text-align:left;padding:.65rem .8rem;font-weight:600;white-space:nowrap}
+td{padding:.65rem .8rem;border-top:1px solid #e2e8f0;color:#334155;vertical-align:top;min-width:9rem}
+tr:hover td{background:#f8fafc}
+</style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased">
+
+<div class="fixed top-0 left-0 w-full h-1 bg-slate-200 z-[60]"><div id="progress" class="h-full w-0 bg-indigo-600"></div></div>
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 mt-1">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#inicio" class="flex items-center gap-3">
+      <img src="logo.png" alt="Logo UNJFSC" class="w-10 h-10 rounded-full object-cover border border-slate-200 bg-indigo-100"
+        onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect width=%2240%22 height=%2240%22 fill=%22%234f46e5%22/%3E%3Ctext x=%2220%22 y=%2226%22 font-size=%2214%22 font-family=%22Arial%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22%3EUN%3C/text%3E%3C/svg%3E'">
+      <span class="font-bold text-slate-900 leading-tight text-sm sm:text-base">Auditoría de T.I.<span class="block text-xs font-medium text-indigo-600">UNJFSC · Grupo 06</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-600" id="navLinks"></nav>
+    <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" class="lg:hidden p-2 rounded-lg hover:bg-slate-100">
+      <svg id="icoOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="icoClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1"></div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8">
+<div class="space-y-8 min-w-0">
+
+<!-- HERO -->
+<section id="inicio" class="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white p-6 sm:p-10 shadow-lg">
+  <p class="text-indigo-300 text-xs sm:text-sm font-semibold tracking-widest uppercase">Universidad Nacional José Faustino Sánchez Carrión</p>
+  <p class="text-slate-300 text-xs sm:text-sm mt-1">Facultad de Ingeniería Industrial, Sistemas e Informática · Escuela Profesional de Ingeniería de Sistemas</p>
+  <h1 class="mt-5 text-3xl sm:text-5xl font-extrabold leading-tight">Introducción a la Auditoría de T.I.</h1>
+  <p class="mt-3 text-lg sm:text-xl text-indigo-200 font-semibold">INFORMATION TECHNOLOGY AUDIT</p>
+  <div class="mt-6 flex flex-wrap gap-2 text-sm">
+    <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Grupo 06</span>
+    <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Docente: Costilla Retuerto Fernando Sosimo</span>
+    <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Huacho – Perú · 2026</span>
+  </div>
+  <p class="mt-6 text-slate-200 max-w-2xl leading-relaxed">La pregunta relevante para la alta dirección ya no es si la tecnología está disponible, sino si se puede confiar en ella. La auditoría de T.I. responde con evidencia objetiva, independiente y verificable.</p>
+  <a href="#fundamentos" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 font-semibold transition">Comenzar lectura
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
+</section>
+
+<!-- ÍNDICE (móvil/tablet) + RESUMEN -->
+<section class="card p-6">
+  <h2 class="text-xl font-bold text-slate-900">Resumen</h2>
+  <p class="mt-2 text-slate-600 leading-relaxed">Esta monografía ofrece una introducción sistemática a la auditoría de T.I.: el proceso independiente y metódico que evalúa si los sistemas, la infraestructura y los procesos protegen los activos, mantienen la integridad de los datos y contribuyen a los objetivos de la organización. Recorre fundamentos, proceso, marcos y estándares, áreas auditables, herramientas y dos casos reales: <strong>Equifax</strong> y <strong>Capital One</strong>.</p>
+  <div class="mt-3 flex flex-wrap gap-2">
+    <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium">Control interno</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium">Gestión de riesgos</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium">COBIT</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium">ISO/IEC 27001</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 font-medium">Auditoría continua</span>
+  </div>
+  <div class="lg:hidden mt-5 pt-5 border-t border-slate-200">
+    <h3 class="font-bold text-slate-900 mb-2">Índice</h3>
+    <ol id="inlineToc" class="space-y-1 text-sm text-indigo-700"></ol>
+  </div>
+</section>
+
+<!-- 1 FUNDAMENTOS -->
+<section id="fundamentos" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo I</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">1. Fundamentos de la Auditoría de T.I.</h2>
+  <p>La auditoría de T.I. es el examen sistemático, independiente y documentado de los sistemas de información, la infraestructura y los procesos que los gestionan. A diferencia de la gestión de T.I., que decide y ejecuta, la auditoría <strong>evalúa y reporta</strong>; su valor reside en la independencia.</p>
+  <h3>Evolución</h3>
+  <div class="flex md:grid md:grid-cols-4 gap-3 overflow-x-auto pb-2 text-sm">
+    <div class="min-w-[9rem] p-3 rounded-xl bg-indigo-50 border border-indigo-100"><b class="text-indigo-700">1969</b><br>Se funda la EDP Auditors Association (hoy ISACA)</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-slate-50 border border-slate-200"><b class="text-indigo-700">1978</b><br>Primer examen CISA</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-indigo-50 border border-indigo-100"><b class="text-indigo-700">1996</b><br>Primera versión de COBIT</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-slate-50 border border-slate-200"><b class="text-indigo-700">2002</b><br>Ley Sarbanes-Oxley</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-indigo-50 border border-indigo-100"><b class="text-indigo-700">2005</b><br>Publicación de ISO/IEC 27001</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-slate-50 border border-slate-200"><b class="text-indigo-700">2018</b><br>Lanzamiento de COBIT 2019</div>
+    <div class="min-w-[9rem] p-3 rounded-xl bg-indigo-50 border border-indigo-100"><b class="text-indigo-700">2022</b><br>Revisión de ISO/IEC 27001 y 27002</div>
+  </div>
+  <h3>Objetivos</h3>
+  <ul>
+    <li><b>Salvaguarda de activos:</b> proteger hardware, software, datos y personal.</li>
+    <li><b>Integridad de los datos:</b> información completa, exacta y oportuna.</li>
+    <li><b>Eficacia y eficiencia:</b> sistemas útiles al negocio y recursos bien aprovechados.</li>
+    <li><b>Cumplimiento:</b> respeto a leyes, contratos y políticas internas.</li>
+  </ul>
+  <p>Todos se vinculan con la tríada <b>confidencialidad, integridad y disponibilidad</b>: casi todo hallazgo se rastrea al debilitamiento de alguno de estos atributos.</p>
+  <h3>Tipos de auditoría según el objeto evaluado</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Tipo</th><th>Enfoque principal</th><th>Evidencia típica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Gobierno y gestión</b></td><td>Alineación de T.I. con el negocio</td><td>Políticas, actas, matrices de riesgo</td></tr>
+      <tr><td><b>Seguridad de la información</b></td><td>Confidencialidad, integridad y disponibilidad</td><td>Reportes de escaneo, bitácoras</td></tr>
+      <tr><td><b>Aplicaciones</b></td><td>Exactitud y autorización de transacciones</td><td>Pruebas de transacciones, matrices de roles</td></tr>
+      <tr><td><b>Bases de datos</b></td><td>Integridad y trazabilidad</td><td>Listados de privilegios, pruebas de restauración</td></tr>
+      <tr><td><b>Infraestructura y redes</b></td><td>Disponibilidad y resiliencia</td><td>Diagramas de red, reglas de firewall</td></tr>
+      <tr><td><b>Cumplimiento</b></td><td>Conformidad con requisitos externos e internos</td><td>Matrices de cumplimiento, certificaciones</td></tr>
+    </tbody></table></div>
+  <h3>Perfil del auditor</h3>
+  <ul>
+    <li><b>Independencia y objetividad:</b> no auditar lo que diseñó u operó.</li>
+    <li><b>Competencia y diligencia profesional:</b> actualización continua.</li>
+    <li><b>Confidencialidad e integridad:</b> uso responsable y veraz de la información.</li>
+  </ul>
+  <p>Certificaciones como <b>CISA</b> (ISACA) o auditor líder ISO/IEC 27001 acreditan competencia, pero no reemplazan el criterio profesional.</p>
+</section>
+
+<!-- 2 PROCESO -->
+<section id="proceso" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo II</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">2. El Proceso de Auditoría de T.I.</h2>
+  <p>Cada trabajo sigue una secuencia estructurada que hace las conclusiones consistentes, repetibles y defendibles. No es estrictamente lineal: las lecciones de cada ciclo retroalimentan la planificación del siguiente.</p>
+  <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-3 my-4">
+    <div class="rounded-xl p-4 text-white bg-slate-900"><b>1. Planificación</b><p class="!text-slate-200 !mb-0 text-sm !leading-snug mt-1">Comprensión del negocio, riesgos, alcance, criterios y programa de trabajo.</p></div>
+    <div class="rounded-xl p-4 text-white bg-indigo-800"><b>2. Ejecución</b><p class="!text-indigo-100 !mb-0 text-sm !leading-snug mt-1">Evidencia, pruebas de diseño y eficacia, papeles de trabajo.</p></div>
+    <div class="rounded-xl p-4 text-white bg-indigo-600"><b>3. Informe</b><p class="!text-indigo-100 !mb-0 text-sm !leading-snug mt-1">Hallazgos, severidad, recomendaciones y opinión.</p></div>
+    <div class="rounded-xl p-4 text-white bg-indigo-400"><b>4. Seguimiento</b><p class="!text-white !mb-0 text-sm !leading-snug mt-1">Planes de acción, verificación y cierre de hallazgos.</p></div>
+  </div>
+  <h3>Evaluación de riesgos y materialidad</h3>
+  <p>La auditoría basada en riesgos prioriza el esfuerzo donde la exposición es mayor: <b>riesgo inherente = probabilidad × impacto</b> (matriz 5×5: bajo 1–4, medio 5–9, alto 10–16, crítico 17–25). En T.I. la materialidad no es solo monetaria: exponer datos personales puede ser material aunque su costo inmediato sea bajo.</p>
+  <h3>Técnicas para obtener evidencia</h3>
+  <p>La evidencia debe ser <b>suficiente</b> y <b>apropiada</b>. Ninguna técnica basta sola; su fuerza está en la corroboración cruzada.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Técnica</th><th>Ejemplo en T.I.</th></tr></thead>
+    <tbody>
+      <tr><td><b>Entrevista</b></td><td>Consultar al DBA cómo se otorgan privilegios</td></tr>
+      <tr><td><b>Observación</b></td><td>Observar el procedimiento de respaldo</td></tr>
+      <tr><td><b>Inspección documental</b></td><td>Revisar la política de control de accesos</td></tr>
+      <tr><td><b>Inspección técnica</b></td><td>Revisar la política de contraseñas del directorio activo</td></tr>
+      <tr><td><b>Reejecución</b></td><td>Recalcular un interés con los parámetros del sistema</td></tr>
+      <tr><td><b>Análisis de datos</b></td><td>Cruzar usuarios activos con empleados vigentes</td></tr>
+    </tbody></table></div>
+  <h3>Anatomía de un hallazgo</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Elemento</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><b>Condición</b> (¿qué se encontró?)</td><td>El 18 % de las cuentas administrativas pertenece a personal que ya no labora.</td></tr>
+      <tr><td><b>Criterio</b> (¿qué debería ocurrir?)</td><td>Revocar privilegios dentro de las 24 h posteriores al cese.</td></tr>
+      <tr><td><b>Causa</b> (¿por qué?)</td><td>No hay coordinación entre RR. HH. y T.I.</td></tr>
+      <tr><td><b>Efecto</b> (¿qué riesgo?)</td><td>Acceso no autorizado, fraude o filtración.</td></tr>
+      <tr><td><b>Recomendación</b></td><td>Automatizar la baja de cuentas y revisar accesos trimestralmente.</td></tr>
+    </tbody></table></div>
+  <p>Sin seguimiento, el informe es un documento sin consecuencias; con él, la auditoría produce mejora real.</p>
+</section>
+
+<!-- 3 MARCOS -->
+<section id="marcos" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo III</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">3. Marcos de Referencia, Estándares y Normativa</h2>
+  <p>Sin criterios, la opinión del auditor sería subjetiva. Los criterios provienen de marcos de gobierno, estándares certificables y normativa legal.</p>
+  <h3>COBIT 2019</h3>
+  <p>Marco de ISACA con <b>40 objetivos</b> de gobierno y gestión: el dominio <b>EDM</b> (gobierno, 5 objetivos) y los dominios de gestión <b>APO, BAI, DSS y MEA</b> (35 objetivos). Cada organización los prioriza según su contexto; por ejemplo APO12 (riesgos), BAI06 (cambios) o DSS05 (seguridad).</p>
+  <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs sm:text-sm my-3">
+    <div class="p-3 rounded-lg bg-slate-900 text-white col-span-2 sm:col-span-1"><b>EDM</b><br>Evaluar, Dirigir y Monitorear</div>
+    <div class="p-3 rounded-lg bg-indigo-800 text-white"><b>APO</b><br>Alinear, Planificar y Organizar</div>
+    <div class="p-3 rounded-lg bg-indigo-600 text-white"><b>BAI</b><br>Construir, Adquirir e Implementar</div>
+    <div class="p-3 rounded-lg bg-indigo-500 text-white"><b>DSS</b><br>Entregar, Dar Servicio y Soporte</div>
+    <div class="p-3 rounded-lg bg-indigo-400 text-white"><b>MEA</b><br>Monitorear, Evaluar y Valorar</div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Marco / Estándar</th><th>Naturaleza</th><th>Uso en la auditoría</th></tr></thead>
+    <tbody>
+      <tr><td><b>COBIT 2019</b></td><td>Marco de gobierno y gestión (ISACA)</td><td>Criterios por proceso y madurez</td></tr>
+      <tr><td><b>ISO/IEC 27001 / 27002</b></td><td>Estándar certificable y guía de 93 controles</td><td>Conformidad del SGSI</td></tr>
+      <tr><td><b>NIST CSF 2.0</b></td><td>Marco voluntario de ciberseguridad (6 funciones)</td><td>Madurez: Gobernar a Recuperar</td></tr>
+      <tr><td><b>ITAF / Normas IIA</b></td><td>Estándares profesionales</td><td>Cómo planificar, ejecutar y reportar</td></tr>
+      <tr><td><b>ISO 19011</b></td><td>Directrices para auditar sistemas de gestión</td><td>Programa de auditoría y competencia</td></tr>
+    </tbody></table></div>
+  <p>También son referentes <b>ITIL</b> (servicios de T.I.), <b>ISO/IEC 38500</b> (gobierno de T.I.) y <b>COSO</b> (control interno).</p>
+  <h3>Contexto normativo en el Perú</h3>
+  <ul>
+    <li><b>Ley N.° 29733:</b> Protección de Datos Personales.</li>
+    <li><b>Ley N.° 30096:</b> Delitos Informáticos.</li>
+    <li><b>Resolución SBS N.° 504-2021:</b> gestión de seguridad de la información y ciberseguridad (vigente desde el 1 de julio de 2021).</li>
+    <li><b>Sector público:</b> gobierno digital y Sistema Nacional de Control.</li>
+  </ul>
+</section>
+
+<!-- 4 ÁREAS -->
+<section id="areas" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo IV</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">4. Áreas Auditables del Entorno Tecnológico</h2>
+  <p>El entorno se compone de capas interdependientes: la falla de un control en una capa puede comprometer a las demás, por lo que se evalúan de forma integrada.</p>
+  <div class="grid sm:grid-cols-2 gap-3 my-3">
+    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50"><b>Gobierno y gestión</b><p class="!mb-0 text-sm">Plan estratégico, roles, comités, proveedores. Una deficiencia aquí suele ser causa raíz de otras.</p></div>
+    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50"><b>Seguridad lógica</b><p class="!mb-0 text-sm">Identidades, privilegio mínimo (RBAC), segregación de funciones, MFA y revisión de accesos.</p></div>
+    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50"><b>Aplicaciones y SDLC</b><p class="!mb-0 text-sm">Controles de entrada, procesamiento y salida; gestión de cambios y CI/CD.</p></div>
+    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50"><b>Bases de datos</b><p class="!mb-0 text-sm">Cuentas administrativas, cifrado, bitácoras y respaldos probados.</p></div>
+    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 sm:col-span-2"><b>Infraestructura, redes y nube</b><p class="!mb-0 text-sm">Segmentación, firewalls, parches y modelo de <b>responsabilidad compartida</b>: el proveedor protege la infraestructura; el cliente configura identidades, permisos, redes y cifrado.</p></div>
+  </div>
+  <h3>Matriz de riesgos, controles y pruebas</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Área</th><th>Riesgo principal</th><th>Control esperado</th><th>Prueba</th></tr></thead>
+    <tbody>
+      <tr><td><b>Seguridad lógica</b></td><td>Cuentas huérfanas, privilegios excesivos</td><td>Alta/baja formal y recertificación</td><td>Cruce de usuarios con nómina</td></tr>
+      <tr><td><b>Aplicaciones</b></td><td>Transacciones erróneas o no autorizadas</td><td>Validaciones y reconciliaciones</td><td>Prueba de transacciones</td></tr>
+      <tr><td><b>Gestión de cambios</b></td><td>Cambios sin autorización ni pruebas</td><td>Flujo de aprobación, entornos separados</td><td>Muestreo de cambios</td></tr>
+      <tr><td><b>Bases de datos</b></td><td>Extracción masiva de datos</td><td>Privilegios mínimos, cifrado, bitácoras</td><td>Revisión de privilegios</td></tr>
+      <tr><td><b>Respaldo</b></td><td>Pérdida de datos</td><td>Respaldos aislados con pruebas de restauración</td><td>Observar una restauración</td></tr>
+      <tr><td><b>Infraestructura y nube</b></td><td>Exposición pública de recursos</td><td>Configuración base segura, IAM</td><td>Revisión de reglas de red</td></tr>
+    </tbody></table></div>
+  <p><i>"Un respaldo que nunca se restaura es una suposición, no un control."</i></p>
+</section>
+
+<!-- 5 HERRAMIENTAS -->
+<section id="herramientas" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo V</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">5. Herramientas, Técnicas y Auditoría Continua</h2>
+  <p>Las <b>CAATs</b> permiten examinar la totalidad de una población en lugar de una muestra: duplicados, secuencias incompletas, transacciones fuera de horario, valores atípicos y reconciliaciones.</p>
+  <ul>
+    <li>Definir el objetivo de la prueba.</li>
+    <li>Obtener y validar los datos con conteos y sumas de control.</li>
+    <li>Ejecutar el análisis y evaluar excepciones (errores vs. falsos positivos).</li>
+    <li>Documentar como papel de trabajo reproducible.</li>
+  </ul>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Objetivo</th><th>Herramienta / técnica</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td><b>Integridad de datos</b></td><td>SQL y scripts (Python)</td><td>Listado de excepciones</td></tr>
+      <tr><td><b>Seguridad técnica</b></td><td>Escáneres de vulnerabilidades</td><td>Vulnerabilidades priorizadas</td></tr>
+      <tr><td><b>Control de accesos</b></td><td>Exportaciones del directorio</td><td>Cuentas sin responsable</td></tr>
+      <tr><td><b>Detección de eventos</b></td><td>SIEM y análisis de bitácoras</td><td>Alertas y trazabilidad</td></tr>
+      <tr><td><b>Monitoreo permanente</b></td><td>Pruebas automatizadas y paneles</td><td>Indicadores casi en tiempo real</td></tr>
+    </tbody></table></div>
+  <h3>Auditoría continua y modelo de tres líneas</h3>
+  <p>El <b>monitoreo continuo</b> corresponde a la gerencia (1.ª y 2.ª línea); la <b>auditoría continua</b> al auditor interno (3.ª línea), que aporta aseguramiento independiente al órgano de gobierno. Con IA y analítica avanzada surgen nuevos riesgos (sesgos, falta de explicabilidad) y exigen preservar la evidencia digital con sumas de control.</p>
+</section>
+
+<!-- 6 CASOS -->
+<section id="casos" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Capítulo VI</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">6. Casos de Estudio en Entornos Reales</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+      <h3 class="!mt-0">Equifax (2017)</h3>
+      <p class="!text-sm">Exposición de datos de ~147 millones de personas. Una vulnerabilidad conocida en Apache Struts no fue parchada en el sistema ACIS.</p>
+      <ul class="text-sm">
+        <li>Inventario de activos incompleto.</li>
+        <li>Parchado sin verificación ni escalamiento.</li>
+        <li>Escaneo de vulnerabilidades ineficaz.</li>
+        <li>Monitoreo inactivo 19 meses por un certificado vencido.</li>
+      </ul>
+    </div>
+    <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+      <h3 class="!mt-0">Capital One (2019)</h3>
+      <p class="!text-sm">Acceso a datos de ~100 millones de personas en EE. UU. y ~6 millones en Canadá. La OCC impuso una sanción de 80 millones de dólares (2020).</p>
+      <ul class="text-sm">
+        <li>Evaluación de riesgos deficiente antes de migrar a la nube.</li>
+        <li>Controles de red y prevención de fuga insuficientes.</li>
+        <li>Auditoría interna que no reportó debilidades.</li>
+        <li>Directorio sin exigir responsabilidad a la gerencia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Caso</th><th>Falla crítica</th><th>Hallazgo principal</th></tr></thead>
+    <tbody>
+      <tr><td><b>Equifax</b></td><td>Componente web vulnerable sin parchar; monitoreo inactivo</td><td>Ausencia de pruebas de cobertura sobre escaneo, parches y certificados</td></tr>
+      <tr><td><b>Capital One</b></td><td>Configuración inadecuada en la nube</td><td>Falta de aseguramiento independiente efectivo</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 7 CONCLUSIONES -->
+<section id="conclusiones" class="card p-6 sm:p-8 prose-a">
+  <p class="text-xs font-bold text-indigo-600 tracking-widest uppercase">Cierre</p>
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">7. Conclusiones y Recomendaciones</h2>
+  <h3>Conclusiones</h3>
+  <ul>
+    <li>La auditoría de T.I. es una función de aseguramiento independiente basada en riesgos, no una verificación punitiva.</li>
+    <li>COBIT 2019, ISO/IEC 27001, NIST CSF, ITAF y las normas del IIA aportan criterios objetivos; la normativa peruana define obligaciones por sector.</li>
+    <li>Las brechas de mayor impacto nacen de la falta de controles básicos (inventario, parches, configuración, monitoreo), no de amenazas sofisticadas.</li>
+    <li>La auditoría continua reduce el tiempo entre la aparición de una deficiencia y su detección.</li>
+  </ul>
+  <h3>Recomendaciones</h3>
+  <ul>
+    <li>Fortalecer una función de auditoría de T.I. independiente, con acceso directo al comité de auditoría.</li>
+    <li>Construir programas de auditoría sobre evaluaciones de riesgo periódicas y marcos reconocidos.</li>
+    <li>Involucrar a la auditoría desde el inicio de proyectos como migraciones a la nube.</li>
+    <li>Incorporar análisis de datos y pruebas automatizadas; dar seguimiento riguroso a los hallazgos hasta su cierre.</li>
+  </ul>
+</section>
+
+</div>
+
+<!-- SIDEBAR -->
+<aside class="hidden lg:block">
+  <div class="sticky top-24 space-y-5">
+    <div class="card p-5">
+      <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h10M4 18h7"/></svg>Contenido</h3>
+      <ul id="toc" class="space-y-1 text-sm"></ul>
+    </div>
+    <div class="card p-5">
+      <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Autores · Grupo 06</h3>
+      <ul class="authors space-y-2 text-sm text-slate-700"></ul>
+    </div>
+    <div class="card p-5 bg-indigo-50 border-indigo-100">
+      <h3 class="font-bold text-slate-900 mb-1">Recursos</h3>
+      <p class="text-sm text-slate-600 mb-3">Descarga la monografía completa en PDF.</p>
+      <a href="Grupo6-Introduccion_A_La_Auditoria_De_TI.pdf" download class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>Descargar material</a>
+    </div>
+  </div>
+</aside>
+</main>
+
+<!-- Autores y recursos móvil -->
+<section class="lg:hidden max-w-7xl mx-auto px-4 pb-8 grid sm:grid-cols-2 gap-4">
+  <div class="card p-5"><h3 class="font-bold text-slate-900 mb-3">Créditos · Grupo 06</h3><ul class="authors space-y-2 text-sm text-slate-700"></ul></div>
+  <div class="card p-5 bg-indigo-50 border-indigo-100"><h3 class="font-bold text-slate-900 mb-1">Recursos</h3><p class="text-sm text-slate-600 mb-3">Descarga la monografía completa en PDF.</p>
+    <a href="Grupo6-Introduccion_A_La_Auditoria_De_TI.pdf" download class="block text-center px-4 py-2.5 rounded-lg bg-indigo-600 text-white text-sm font-semibold">Descargar material</a></div>
+</section>
+
+<footer class="bg-slate-900 text-slate-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid md:grid-cols-3 gap-6 text-sm">
+    <div><p class="font-bold text-white">Introducción a la Auditoría de T.I.</p><p class="mt-1">UNJFSC · Facultad de Ingeniería Industrial, Sistemas e Informática · Huacho – Perú</p><p class="mt-1">Docente: Costilla Retuerto Fernando Sosimo</p></div>
+    <div><p class="font-bold text-white">Créditos</p><ul class="authors mt-1 space-y-0.5"></ul></div>
+    <div><p class="font-bold text-white">Legal</p><ul class="mt-1 space-y-0.5"><li><a href="#" class="hover:text-white">Términos de uso</a></li><li><a href="#" class="hover:text-white">Política de privacidad</a></li><li><a href="#" class="hover:text-white">Derechos de autor</a></li></ul></div>
+  </div>
+  <div class="border-t border-slate-700 text-center text-xs py-4">© 2026 Grupo 06 – UNJFSC. Material con fines académicos.</div>
+</footer>
+
+<script>
+const sections=[["fundamentos","Fundamentos"],["proceso","Proceso"],["marcos","Marcos y normativa"],["areas","Áreas auditables"],["herramientas","Herramientas"],["casos","Casos de estudio"],["conclusiones","Conclusiones"]];
+const authors=["Alvarado Pozo, Genesis","Carlos Susanibar, Brayan","Changana Sosa, Lizbet","Diaz Huacho, Angie","Tahua Castillo, Cristhian"];
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+$("#navLinks").innerHTML=sections.map(([id,t])=>`<a href="#${id}" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-700">${t}</a>`).join("");
+$("#mobileMenu").innerHTML=sections.map(([id,t])=>`<a href="#${id}" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50">${t}</a>`).join("");
+$("#toc").innerHTML=sections.map(([id,t],i)=>`<li><a href="#${id}" data-id="${id}" class="toc-link block border-l-2 border-transparent pl-3 py-1 text-slate-600 hover:text-indigo-700">${i+1}. ${t}</a></li>`).join("");
+$("#inlineToc").innerHTML=sections.map(([id,t],i)=>`<li><a href="#${id}" class="hover:underline">${i+1}. ${t}</a></li>`).join("");
+$$(".authors").forEach(ul=>ul.innerHTML=authors.map(a=>`<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>${a}</li>`).join(""));
+const btn=$("#menuBtn"),menu=$("#mobileMenu");
+function toggle(open){menu.classList.toggle("hidden",!open);$("#icoOpen").classList.toggle("hidden",open);$("#icoClose").classList.toggle("hidden",!open);btn.setAttribute("aria-expanded",open)}
+btn.addEventListener("click",()=>toggle(menu.classList.contains("hidden")));
+menu.addEventListener("click",e=>{if(e.target.tagName==="A")toggle(false)});
+function onScroll(){
+  const h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  $("#progress").style.width=(max>0?h.scrollTop/max*100:0)+"%";
+  let cur=null;sections.forEach(([id])=>{const el=document.getElementById(id);if(el.getBoundingClientRect().top<140)cur=id});
+  $$(".toc-link").forEach(a=>a.classList.toggle("active",a.dataset.id===cur));
+}
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+</script>
+</body>
+</html>
